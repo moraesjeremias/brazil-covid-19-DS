@@ -14,7 +14,51 @@ sub_rj_state = subset(covid_dataset, estado %in% c("RJ") & municipio %in% c(""))
 
 # # # Cidade
 sub_rj_city = subset(covid_dataset, estado %in% c("RJ") & municipio %in% c("Rio de Janeiro"))
-print(sub_rj)
+
+# Data Handling and Exploration
+# Brazil's total occurrence cases 
+  brazil_total_cases = max(sub_region$casosAcumulado)
+  print(brazil_total_cases)
+  
+# Brazil's total death cases 
+  brazil_total_deaths = max(sub_region$obitosAcumulado)
+  print(brazil_total_deaths)
+  
+# Brazil's maximum lethality
+  brazil_max_let = max((sub_region$obitosAcumulado/sub_region$casosAcumulado)*100, na.rm = TRUE)
+  print(round(brazil_max_let, digits = 2))
+  
+  
+# Rio de Janeiro (state) total occurrence cases 
+  rj_state_total_cases = max(sub_rj_state$casosAcumulado)
+  print(rj_state_total_cases)
+  
+# Rio de Janeiro (state) total death cases 
+  rj_state_total_deaths = max(sub_rj_state$obitosAcumulado)
+  print(rj_state_total_deaths)
+  
+# Rio de Janeiro (state) maximum lethality
+  rj_state_max_let = max((sub_rj_state$obitosAcumulado/sub_rj_state$casosAcumulado)*100, na.rm = TRUE)
+  print(round(rj_state_max_let, digits = 2))
+
+  
+  
+# Rio de Janeiro (city) total occurrence cases 
+  rj_city_total_cases = max(sub_rj_city$casosAcumulado)
+  print(rj_city_total_cases)
+  
+# Rio de Janeiro (city) total death cases 
+  rj_city_total_deaths = max(sub_rj_city$obitosAcumulado)
+  print(rj_city_total_deaths)
+  
+# Rio de Janeiro (city) maximum lethality
+  rj_city_max_let = max((sub_rj_city$obitosAcumulado/sub_rj_city$casosAcumulado)*100, na.rm = TRUE)
+  print(round(rj_city_max_let, digits = 2))
+  
+  
+  
+  
+# Data Plotting 
 
 # Brazil's total occurrence cases 
 
