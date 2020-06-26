@@ -9,8 +9,10 @@ class(covid_dataset)
 sub_region = subset(covid_dataset, regiao %in% c("Brasil"))
 
 # # Rio de Janeiro
+# # # Estado
 sub_rj_state = subset(covid_dataset, estado %in% c("RJ") & municipio %in% c(""))
 
+# # # Cidade
 sub_rj_city = subset(covid_dataset, estado %in% c("RJ") & municipio %in% c("Rio de Janeiro"))
 print(sub_rj)
 
@@ -49,7 +51,7 @@ print(sub_rj)
     
     
     
-# Rio de Janeiro total occurrence cases 
+# Rio de Janeiro (state) total occurrence cases 
 
 ggplot(sub_rj_state) + 
   geom_smooth(aes(x = data, y = casosAcumulado, group=estado, colour=estado), size=1.5) + 
@@ -60,10 +62,10 @@ ggplot(sub_rj_state) +
   ggtitle("Casos acumulados de COVID-19 no RJ por data de notificação") + 
   theme(plot.title = element_text(hjust = 0.5), axis.text.x =element_text(angle = 45, hjust = 1) )
 
-# Rio de Janeiro total death cases 
+# Rio de Janeiro (state) total death cases 
 
 ggplot(sub_rj_state) + 
-  geom_smooth(aes(x = data, y = obitosAcumulado, group=regiao, colour=regiao), size=1.5) + 
+  geom_smooth(aes(x = data, y = obitosAcumulado, group=estado, colour=estado), size=1.5) + 
   ylab("Óbitos acumulados") + 
   ylim(0,10000) +
   xlab("Data de Notificação") + 
@@ -71,10 +73,46 @@ ggplot(sub_rj_state) +
   ggtitle("Óbitos acumulados de COVID-19 no RJ por data de notificação") + 
   theme(plot.title = element_text(hjust = 0.5), axis.text.x =element_text(angle = 45, hjust = 1) )
 
-# Rio de Janeiro death rate cases
+# Rio de Janeiro (state) death rate cases
 
 ggplot(sub_rj_state) + 
-  geom_smooth(aes(x = data, y = ((obitosAcumulado/casosAcumulado)*100), group=regiao, colour=regiao), size=1.5) + 
+  geom_smooth(aes(x = data, y = ((obitosAcumulado/casosAcumulado)*100), group=estado, colour=estado), size=1.5) + 
+  ylab("Taxa de Letalidade (%)") + 
+  ylim(0,12) +
+  xlab("Data de Notificação") + 
+  scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) +
+  ggtitle("Taxa de Letalidade de COVID-19 no RJ por data de notificação") + 
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x =element_text(angle = 45, hjust = 1) )
+
+
+
+
+# Rio de Janeiro (city) total occurrence cases 
+
+ggplot(sub_rj_city) + 
+  geom_smooth(aes(x = data, y = casosAcumulado, group=municipio, colour=municipio), size=1.5) + 
+  ylab("Casos Acumulados") + 
+  ylim(0,60000) +
+  xlab("Data de Notificação") + 
+  scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) +
+  ggtitle("Casos acumulados de COVID-19 no RJ por data de notificação") + 
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x =element_text(angle = 45, hjust = 1) )
+
+# Rio de Janeiro (city) total death cases 
+
+ggplot(sub_rj_city) + 
+  geom_smooth(aes(x = data, y = obitosAcumulado, group=municipio, colour=municipio), size=1.5) + 
+  ylab("Óbitos acumulados") + 
+  ylim(0,7500) +
+  xlab("Data de Notificação") + 
+  scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) +
+  ggtitle("Óbitos acumulados de COVID-19 no RJ por data de notificação") + 
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x =element_text(angle = 45, hjust = 1) )
+
+# Rio de Janeiro (city) death rate cases
+
+ggplot(sub_rj_city) + 
+  geom_smooth(aes(x = data, y = ((obitosAcumulado/casosAcumulado)*100), group=municipio, colour=municipio), size=1.5) + 
   ylab("Taxa de Letalidade (%)") + 
   ylim(0,15) +
   xlab("Data de Notificação") + 
