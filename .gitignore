@@ -1,1 +1,4 @@
+# R Studio local configs
 .Rproj.user
+.RData
+.Rhistory

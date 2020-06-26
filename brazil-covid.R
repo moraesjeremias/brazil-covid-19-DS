@@ -55,6 +55,10 @@ sub_rj_city = subset(covid_dataset, estado %in% c("RJ") & municipio %in% c("Rio 
   rj_city_max_let = max((sub_rj_city$obitosAcumulado/sub_rj_city$casosAcumulado)*100, na.rm = TRUE)
   print(round(rj_city_max_let, digits = 2))
   
+# Rio de Janeiro (city) current lethality
+  rj_city_current_let = tail((sub_rj_city$obitosAcumulado/sub_rj_city$casosAcumulado)*100, 1)
+  print((round(rj_city_current_let, digits = 2)))
+  
   
   
   
@@ -103,7 +107,7 @@ ggplot(sub_rj_state) +
   ylim(0,120000) +
   xlab("Data de Notificação") + 
   scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) +
-  ggtitle("Casos acumulados de COVID-19 no RJ por data de notificação") + 
+  ggtitle("Casos acumulados de COVID-19 no estado do RJ por data de notificação") + 
   theme(plot.title = element_text(hjust = 0.5), axis.text.x =element_text(angle = 45, hjust = 1) )
 
 # Rio de Janeiro (state) total death cases 
@@ -114,7 +118,7 @@ ggplot(sub_rj_state) +
   ylim(0,10000) +
   xlab("Data de Notificação") + 
   scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) +
-  ggtitle("Óbitos acumulados de COVID-19 no RJ por data de notificação") + 
+  ggtitle("Óbitos acumulados de COVID-19 no estado do RJ por data de notificação") + 
   theme(plot.title = element_text(hjust = 0.5), axis.text.x =element_text(angle = 45, hjust = 1) )
 
 # Rio de Janeiro (state) death rate cases
@@ -125,7 +129,7 @@ ggplot(sub_rj_state) +
   ylim(0,12) +
   xlab("Data de Notificação") + 
   scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) +
-  ggtitle("Taxa de Letalidade de COVID-19 no RJ por data de notificação") + 
+  ggtitle("Taxa de Letalidade de COVID-19 no estado do RJ por data de notificação") + 
   theme(plot.title = element_text(hjust = 0.5), axis.text.x =element_text(angle = 45, hjust = 1) )
 
 
@@ -139,7 +143,7 @@ ggplot(sub_rj_city) +
   ylim(0,60000) +
   xlab("Data de Notificação") + 
   scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) +
-  ggtitle("Casos acumulados de COVID-19 no RJ por data de notificação") + 
+  ggtitle("Casos acumulados de COVID-19 no município do RJ por data de notificação") + 
   theme(plot.title = element_text(hjust = 0.5), axis.text.x =element_text(angle = 45, hjust = 1) )
 
 # Rio de Janeiro (city) total death cases 
@@ -150,7 +154,7 @@ ggplot(sub_rj_city) +
   ylim(0,7500) +
   xlab("Data de Notificação") + 
   scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) +
-  ggtitle("Óbitos acumulados de COVID-19 no RJ por data de notificação") + 
+  ggtitle("Óbitos acumulados de COVID-19 no município do RJ por data de notificação") + 
   theme(plot.title = element_text(hjust = 0.5), axis.text.x =element_text(angle = 45, hjust = 1) )
 
 # Rio de Janeiro (city) death rate cases
@@ -161,6 +165,6 @@ ggplot(sub_rj_city) +
   ylim(0,15) +
   xlab("Data de Notificação") + 
   scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) +
-  ggtitle("Taxa de Letalidade de COVID-19 no RJ por data de notificação") + 
+  ggtitle("Taxa de Letalidade de COVID-19 no município do RJ por data de notificação") + 
   theme(plot.title = element_text(hjust = 0.5), axis.text.x =element_text(angle = 45, hjust = 1) )
 
