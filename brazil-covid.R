@@ -1,7 +1,7 @@
 install.packages("ggplot2")
 library(ggplot2)
 
-covid_dataset = read.csv("data-raw/HIST_PAINEL_COVIDBR_24jun2020.csv")
+covid_dataset = read.csv("data-raw/HIST_PAINEL_COVIDBR_26jun2020.csv")
 class(covid_dataset)
 
 # Region/States Subsets
@@ -60,8 +60,6 @@ sub_rj_city = subset(covid_dataset, estado %in% c("RJ") & municipio %in% c("Rio 
   print((round(rj_city_current_let, digits = 2)))
   
   
-  
-  
 # Data Plotting 
 
 # Brazil's total occurrence cases 
@@ -69,7 +67,7 @@ sub_rj_city = subset(covid_dataset, estado %in% c("RJ") & municipio %in% c("Rio 
   ggplot(sub_region) + 
   geom_smooth(aes(x = data, y = casosAcumulado, group=regiao, colour=regiao), fill="#000000", size=1.5) + 
   ylab("Casos Acumulados") + 
-  ylim(0,1200000) +
+  ylim(0,1500000) +
   xlab("Data de Notificação") + 
   scale_x_discrete(guide = guide_axis(check.overlap = TRUE)) +
   ggtitle("Casos acumulados de COVID-19 por data de notificação") + 
